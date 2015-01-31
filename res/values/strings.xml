@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Expense Tracker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Select_expense_menu">Select expense menu</string>
+    <string name="title_activity_list_claim">ListClaimActivity</string>
+    <string name="title_activity_view_claim">ViewClaimActivity</string>
+    <string name="title_activity_creat_new_claim">CreatNewClaimActivity</string>
+    <string name="title_activity_claim_item_actibvity">ClaimItemActibvity</string>
+    <string name="title_activity_launcher_main">LauncherMainActivity</string>
+
+</resources>
