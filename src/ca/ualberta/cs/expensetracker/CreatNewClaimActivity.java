@@ -27,7 +27,8 @@ import android.widget.Toast;
 public class CreatNewClaimActivity extends Activity {
 	
 	private static final String FILENAME = "file.sav";
-	private EditText bodyText;
+	private EditText bodyTextAdd;
+	private EditText bodyTextDelete;
 	private ListView oldClaimList;
 	private ArrayList<String> claimlist;
 	private ArrayAdapter<String> adapter;
@@ -37,22 +38,40 @@ public class CreatNewClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_creat_new_claim);
 		
-		bodyText = (EditText) findViewById(R.id.textToAddClaim);
+		bodyTextAdd = (EditText) findViewById(R.id.textToAddClaim);
 		Button addButton = (Button) findViewById(R.id.AddClaim);
 		oldClaimList = (ListView) findViewById(R.id.viewAddedClaim);
+		Button deleteButton = (Button) findViewById(R.id.Delete_Expense);
+		bodyTextDelete = (EditText) findViewById(R.id.textToDeleteClaim);
 		
 		addButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
 				setResult(RESULT_OK);
-				String text = bodyText.getText().toString();
+				String text = bodyTextAdd.getText().toString();
 				claimlist.add(0, text);
 				adapter.notifyDataSetChanged();
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				bodyText.setText("");
+				bodyTextAdd.setText("");
 			}
 			
 		});
+		deleteButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				setResult(RESULT_OK);
+				String text = bodyTextDelete.getText().toString();
+				claimlist.remove(text);
+				adapter.notifyDataSetChanged();
+				saveInFile(text, new Date(System.currentTimeMillis()));
+				bodyTextDelete.setText("");
+				
+				
+			}
+		});
+		
 		
 	}
 	
@@ -68,22 +87,6 @@ public class CreatNewClaimActivity extends Activity {
     	
 	}
 	
-    /*private void populateListView() {
-		// Create list of items
-    	String[] myItems = {"Blue","Green","Purple","Red"}; 
-    	
-    	// Build Adapter
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-    			this, 								// Context for the activity
-    			R.layout.textInLinear,		// Layout to use (create)
-    			myItems);							// Item to be displayed 
-    	
-    	// Configure the list view
-    	
-    	ListView list = (ListView) findViewById(R.id.viewAddedClaim);
-    	list.setAdapter(adapter);
-	} */
-
 
 	
     private ArrayList<String> loadFromFile() {

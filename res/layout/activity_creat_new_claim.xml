@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,31 +9,66 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ca.ualberta.cs.expensetracker.CreatNewClaimActivity" >
 
+
     <EditText
+
         android:id="@+id/textToAddClaim"
-        android:hint="Enter Claim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:ems="10" />
-
-    <ListView
-        android:id="@+id/viewAddedClaim"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/AddClaim"
-        android:layout_centerHorizontal="true" >
-
-    </ListView>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Enter Claim" />
 
     <Button
+        android:id="@+id/Delete_Expense"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textToDeleteClaim"
+        android:text="Delete" />
+
+    <Button
+
         android:id="@+id/AddClaim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textToAddClaim"
         android:layout_alignBottom="@+id/textToAddClaim"
-        android:layout_alignRight="@+id/viewAddedClaim"
+        android:layout_alignEnd="@+id/viewAddedClaim"
+        android:layout_alignParentRight="true"
         android:onClick="addClaimButtonActivity"
         android:text="Add" />
+
+
+    <EditText
+
+        android:id="@+id/textToDeleteClaim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textToAddClaim"
+        android:layout_alignTop="@+id/Delete_Expense"
+        android:ems="10"
+        android:hint="Enter Claim" >
+
+
+        <requestFocus />
+
+    </EditText>
+
+
+    <ListView
+
+        android:id="@+id/viewAddedClaim"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Delete_Expense"
+        android:layout_alignLeft="@id/textToDeleteClaim"
+        android:layout_below="@+id/textToAddClaim" >
+
+
+    </ListView>
+
 
 </RelativeLayout>

@@ -31,44 +31,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         creatnewclaimButton();
-        viewclaimButton();
-        
+
         
         
     }
 
-
-    /*private void populateListView() {
-		// Create list of items
-    	String[] myItems = {"Blue","Green","Purple","Red"}; 
-    	
-    	// Build Adapter
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-    			this, 								// Context for the activity
-    			R.layout.claim_list_view_items,		// Layout to use (create)
-    			myItems);							// Item to be displayed 
-    	
-    	// Configure the list view
-    	
-    	ListView list = (ListView) findViewById(R.id.viewAddedClaim);
-    	list.setAdapter(adapter);
-	} */
-
-
-	private void viewclaimButton() {
-		// TODO Auto-generated method stub
-    	Button messageButton = (Button) findViewById(R.id.view_claim_List);
-    	
-    	messageButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(MainActivity.this, "Opening claim list", Toast.LENGTH_SHORT). show();
-				Intent intent = new Intent(MainActivity.this, ViewClaimActivity.class);
-		    	startActivity(intent);
-			}
-		});
-	}
 
 
 	private void creatnewclaimButton() {

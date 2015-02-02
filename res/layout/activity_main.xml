@@ -22,19 +22,10 @@
         android:id="@+id/sendclaim"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/view_claim_List"
-        android:layout_below="@+id/view_claim_List"
-        android:layout_marginTop="44dp"
-        android:text="Email claim" />
-
-    <Button
-        android:id="@+id/view_claim_List"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/creatclaim"
         android:layout_below="@+id/creatclaim"
-        android:layout_marginTop="48dp"
-        android:text="Go to existing claims" />
+        android:layout_marginTop="44dp"
+        android:text="Email claim" />
 
     <Button
         android:id="@+id/creatclaim"

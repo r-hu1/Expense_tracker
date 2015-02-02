@@ -8,6 +8,7 @@
         android:id="@+id/textInLinear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.74"
         android:text="TextView" />
 
     <Button
@@ -15,11 +16,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit" />
-
-    <Button
-        android:id="@+id/DeleteClaim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
 
 </LinearLayout>
