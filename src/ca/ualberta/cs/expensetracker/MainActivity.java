@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 // Array of options --> ArrayAdapter --> ListView
 
-// List View: {views: claim_items.xml}
+// List View: {views: claim_list_linear.xml}
 
 public class MainActivity extends Activity {
 
@@ -30,16 +30,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        // function call to click into the next activity.
         creatnewclaimButton();
-
-        
-        
     }
 
-
-
 	private void creatnewclaimButton() {
-		// TODO Auto-generated method stub
+
     	// 1. get reference to button
     	Button messageButton = (Button) findViewById(R.id.creatclaim);
     	
@@ -48,15 +44,16 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(MainActivity.this, "Creating new claim", Toast.LENGTH_SHORT). show();
+				
+				// display message "Creating new claim".
+				Toast.makeText(MainActivity.this, "Creating new claim", Toast.LENGTH_SHORT). show();
+				
+				// launch CreateNewClaimActivity.
 				Intent intent = new Intent(MainActivity.this, CreatNewClaimActivity.class);
 		    	startActivity(intent);
 			}
 		});
-    	
-    		
-    	
-		
+
 	}
 
 

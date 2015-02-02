@@ -64,56 +64,77 @@ public class CreatNewClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_creat_new_claim);
 		
+		
+		// assign UI elements to reference
+		
 		bodyTextAdd = (EditText) findViewById(R.id.textToAddClaim);
 		Button addButton = (Button) findViewById(R.id.AddClaim);
 		oldClaimList = (ListView) findViewById(R.id.viewAddedClaim);
 		Button deleteButton = (Button) findViewById(R.id.Delete_Expense);
 		bodyTextDelete = (EditText) findViewById(R.id.textToDeleteClaim);
 		
+		// make add button clickable. 
+		
 		addButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				
 				setResult(RESULT_OK);
+				
+				//retrieve typed array from user
 				String text = bodyTextAdd.getText().toString();
+				
+				// add to list for saving
 				claimlist.add(0, text);
 				adapter.notifyDataSetChanged();
+				
+				//passed to geson to save data to phone memory
 				saveInFile(text, new Date(System.currentTimeMillis()));
+				
+				//erase typed item
 				bodyTextAdd.setText("");
 			}
 			
 		});
+		
+		// make delete button clickable.
 		deleteButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
 				setResult(RESULT_OK);
+				
+				// retrieve delete item form user
 				String text = bodyTextDelete.getText().toString();
+				
+				//remove item from array.
 				claimlist.remove(text);
 				adapter.notifyDataSetChanged();
+				
+				//pass to geson to save data to phone memory
 				saveInFile(text, new Date(System.currentTimeMillis()));
 				bodyTextDelete.setText("");
-				
-				
 			}
 		});
-		
-		
 	}
 	
 	@Override
 	protected void onStart()  {
 
 		super.onStart();
+		//retrieve data from phone memory converts into java array.
 		claimlist = loadFromFile();
+		
+		// let UI able to read data list. 
 		adapter = new ArrayAdapter<String>(this,
 				R.layout.claim_list_linear, R.id.textInLinear,claimlist);
+		
+		// put data onto ListView for user to see.
 		ListView oldClaimList = (ListView) findViewById(R.id.viewAddedClaim);
     	oldClaimList.setAdapter(adapter);
     	
 	}
-	
-
 	
     private ArrayList<String> loadFromFile() {
 		// TODO Auto-generated method stub
@@ -128,12 +149,14 @@ public class CreatNewClaimActivity extends Activity {
 			fis.close();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// catch FileNotFoundException error
 			e.printStackTrace();
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// catch IOException error
 			e.printStackTrace();
 		}
+		// make sure when list is empty, App. does not crash.
 		if (claimlist == null){
 			claimlist = new ArrayList<String>();
 		}
@@ -141,12 +164,15 @@ public class CreatNewClaimActivity extends Activity {
 
 	}
 
+    
 	protected void saveInFile(String text, Date date) {
 		Gson gson = new Gson();
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
 					0);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			
+		// stores the Claim array for later use.
 			gson.toJson(claimlist,osw);
 			osw.flush();
 			fos.close();
@@ -178,7 +204,10 @@ public class CreatNewClaimActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 	public void addClaimButtonActivity(View v){
+		
+		//Message "Adding a claim" appears on screen.
 		Toast.makeText(this,"Adding a claim", Toast.LENGTH_SHORT).show();
 		EditText textview = (EditText) findViewById(R.id.textToAddClaim);
 		
